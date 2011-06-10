@@ -1,0 +1,24 @@
+Ok, so here's how the .jar-File works.
+
+
+Just download the .jar, input.txt, and (for now) output.txt- File to the same dir.
+Assuming you have java installed, open your command window or terminal.
+
+The basic command, to get this program to work is:
+
+java -jar FindSynonyms.jar $1 $2 $3
+
+
+$1 is the Path to the input-File
+$2 is the Path to the output-File
+with $3 you have three options:
+
+1: search with the Google API
+2: search with the online Thesaurus-Dic
+3: search with both
+
+You won't see any output on the command Line. Just open the output-File with wordpad or notepad++ or something, to view the output.
+
+Example command:
+
+java -jar FindSynonyms.jar input.txt output.txt 3
