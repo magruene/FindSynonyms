@@ -45,6 +45,7 @@ public class Thesaurus {
 	public String sendRequest(String word) {
 		String line = "";
 		try {
+			//get the json-String
 			URL serverAddress = new URL(
 					"http://thesaurus.altervista.org/thesaurus/v1?word="
 							+ URLEncoder.encode(word, "UTF-8")
@@ -61,7 +62,8 @@ public class Thesaurus {
 				StringBuilder sb = new StringBuilder();
 				while ((line = br.readLine()) != null)
 					sb.append(line + '\n');
-
+				
+				//filter everything that's not needed for the output. 
 				line = sb.toString();
 				line = line.replaceAll("\\{\"response\"\\:\\[", "");
 				sb = new StringBuilder();

@@ -45,6 +45,7 @@ public class FindSynonyms {
 
 		StringBuilder sb = new StringBuilder();
 		try {
+			//get the json-String
 			URL serverAddress = new URL(
 					"http://www.google.com/dictionary/json?callback=dict_api.callbacks.id100&q="
 							+ term + "&sl=en&tl=en&restrict=pr%2Cde&client=te");
@@ -59,6 +60,9 @@ public class FindSynonyms {
 								.getInputStream()));
 				while ((line = br.readLine()) != null)
 					sb.append(line + '\n');
+				
+				//Try to delete everything, we don't need. To do this like this, may be stupid, but the json-String is the same
+				//everytime, so this will most likely work everytime too.
 				line = sb.toString();
 				line = line.replaceAll("dict_api\\.callbacks\\.id100\\(", "");
 				line = line.replaceAll("\\,200\\,null\\)", "");

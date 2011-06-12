@@ -40,31 +40,34 @@ public class ReadFromGoogleApi {
 		FileReader fileReader;
 		try {
 			String word = "";
-			fileReader = new FileReader(args[0]);
+			fileReader = new FileReader(input);
 			BufferedReader reader = new BufferedReader(fileReader);
 			StringBuilder outputSynonyms = new StringBuilder();
 			while (word != null) {
 				word = reader.readLine();
 				if (word != null) {
 					switch (chooser) {
+					//only Google API
 					case 1:
 						outputSynonyms.append(word + ", ");
-						findThemGoogle = new FindSynonyms(args[0], args[1]);
+						findThemGoogle = new FindSynonyms(input, output);
 						outputSynonyms
 								.append(findThemGoogle.findSynonyms(word) + '\n');
 						break;
+					//only online Thesaurus
 					case 2:
 						outputSynonyms.append(word + ", ");
-						findThemThesaurus = new Thesaurus(args[0], args[1]);
+						findThemThesaurus = new Thesaurus(input, output);
 						outputSynonyms.append(findThemThesaurus
 								.sendRequest(word));
 						break;
 					case 3:
+					//use both
 						outputSynonyms.append(word + ", ");
-						findThemGoogle = new FindSynonyms(args[0], args[1]);
+						findThemGoogle = new FindSynonyms(input, output);
 						outputSynonyms.append(findThemGoogle.findSynonyms(word)
 								+ " ");
-						findThemThesaurus = new Thesaurus(args[0], args[1]);
+						findThemThesaurus = new Thesaurus(input, output);
 						outputSynonyms.append(findThemThesaurus
 								.sendRequest(word) + '\n');
 					default:
@@ -98,4 +101,4 @@ public class ReadFromGoogleApi {
 			e.printStackTrace();
 		}
 	}
-} // end of Thesaurus
+}
