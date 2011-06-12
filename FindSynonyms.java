@@ -61,8 +61,8 @@ public class FindSynonyms {
 				while ((line = br.readLine()) != null)
 					sb.append(line + '\n');
 				
-				//Try to delete everything, we don't need. To do this like this, may be stupid, but the json-String is the same
-				//everytime, so this will most likely work everytime too.
+				//Try to delete everything, we don't need. To solve it like this, may be stupid, but the 
+                                //json- String is the same everytime, so this will most likely work everytime too.
 				line = sb.toString();
 				line = line.replaceAll("dict_api\\.callbacks\\.id100\\(", "");
 				line = line.replaceAll("\\,200\\,null\\)", "");
